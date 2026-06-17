@@ -7,7 +7,7 @@ export default function Menu({ onJogar, onTreinar, onBase, onConfig }) {
         <div className="menu-brand">
           <div className="menu-logo">✋</div>
           <div>
-            <h1>Gestual Play</h1>
+            <h1>TREMU OFICINA</h1>
             <p>Use gestos para jogar, aprender e treinar a língua gestual portuguesa.</p>
           </div>
         </div>

@@ -20,7 +20,7 @@ import './style.css'
 const TEMPO_CONFIRMACAO = 1.5
 const PALAVRA_TAMANHO = 4
 const JOGADAS_MAX = 6
-const LETRAS_EXIBIDAS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+const LETRAS_EXIBIDAS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',]
 const ORDEM_LETRAS = [...LETRAS_DISPONIVEIS].sort()
 const STATUS_CORRETO = 'correct'
 const STATUS_PRESENTE = 'present'
