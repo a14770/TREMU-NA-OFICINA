@@ -675,7 +675,7 @@ export default function App() {
                   {letrasPorContagem.map((item) => (
                     <div key={item.letra} className={`letter-row ${databaseViewLetter === item.letra ? 'letter-row--active' : ''}`}>
                       <button type="button" className="trash-button" onClick={() => apagarLetra(item.letra)}>
-                        🗑
+                        📂
                       </button>
                       <button type="button" className="letter-row__main" onClick={() => setDatabaseViewLetter(item.letra)}>
                         <div>
