@@ -21,9 +21,9 @@ const TEMPO_CONFIRMACAO = 1.5
 const PALAVRA_TAMANHO = 4
 const JOGADAS_MAX = 6
 const LETRAS_EXIBIDAS = [
-  'A','B','C','D','E','F','G','H','I','J',
-  'K','L','M','N','O','P','Q','R','S','T',
-  'U','V','W','X','Y','Z'
+  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+  'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+  'U', 'V', 'W', 'X', 'Y', 'Z'
 ]
 const ORDEM_LETRAS = [...LETRAS_DISPONIVEIS].sort()
 const STATUS_CORRETO = 'correct'
@@ -232,7 +232,7 @@ export default function App() {
     }
 
     if (tentativaAtual >= JOGADAS_MAX) {
-      setResultadoMensagem(`Acabaram as 6 tentativas. A palavra era ${palavraAtual.palavra}.`) 
+      setResultadoMensagem(`Acabaram as 6 tentativas. A palavra era ${palavraAtual.palavra}.`)
       if (resetTimeoutRef.current) clearTimeout(resetTimeoutRef.current)
       resetTimeoutRef.current = setTimeout(resetJogo, 2600)
       return
@@ -565,19 +565,45 @@ export default function App() {
                 <div className="gesture-row">
                   <div className="section-label">Gestos disponíveis</div>
                   <div className="gesture-strip">
-                    {LETRAS_EXIBIDAS.map((letra) => (
-                      <button
-                        key={letra}
-                        type="button"
-                        className={`gesture-card ${candidatoGesto === letra ? 'gesture-card--active' : ''}`}
-                        onClick={() => adicionarLetra(letra)}
-                      >
-                        <div className="gesture-icon">
-                          <MaoGesto letra={letra} tamanho={52} ativo />
-                        </div>
-                        <span>{letra}</span>
-                      </button>
-                    ))}
+                    {LETRAS_EXIBIDAS.map((letra) => {
+                      const exemplos = dataset.exemplos.filter(
+                        (item) => item.letra === letra
+                      )
+
+                      const imagem =
+                        exemplos.length > 0
+                          ? exemplos[exemplos.length - 1].imagem
+                          : null
+
+                      return (
+                        <button
+                          key={letra}
+                          type="button"
+                          className={`gesture-card ${candidatoGesto === letra ? 'gesture-card--active' : ''
+                            }`}
+                          onClick={() => adicionarLetra(letra)}
+                        >
+                          <div className="gesture-icon">
+                            {imagem ? (
+                              <img
+                                src={imagem}
+                                alt={letra}
+                                style={{
+                                  width: '52px',
+                                  height: '52px',
+                                  objectFit: 'cover',
+                                  borderRadius: '10px',
+                                }}
+                              />
+                            ) : (
+                              <MaoGesto letra={letra} tamanho={52} ativo />
+                            )}
+                          </div>
+
+                          <span>{letra}</span>
+                        </button>
+                      )
+                    })}
                   </div>
                 </div>
               </main>
